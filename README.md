@@ -14,6 +14,34 @@ The interface between ROS and real robot: `kist_legged_real`
 # Dependencies
 * [unitree_legged_sdk](https://github.com/unitreerobotics): your robot is suitable for `unitree_legged_sdk`
 
+* [Eigen3](https://eigen.tuxfamily.org/index.php?title=Main_Page)
+
+* [RBDL 2.6.0](https://github.com/rbdl/rbdl)
+```
+git clone https://github.com/rbdl/rbdl
+cd rbdl
+mkdir build
+cd build
+cmake -D CMAKE_BUILD_TYPE=Release -DRBDL_BUILD_ADDON_URDFREADER=ON ..
+make all
+make install
+sudo ldconfig
+```
+
+* [qpOASES](https://github.com/coin-or/qpOASES)
+```
+git clone https://github.com/coin-or/qpOASES.git
+cd qpOASES
+mkdir build
+cd build
+cmake ..
+make all
+make install
+sudo ldconfig
+```
+
+
+
 # Configuration
 Make sure the following exist in your `~/.bashrc` file or export them in terminal. `melodic`, `gazebo-8`, `~/catkin_ws`, `amd64` and the paths to `unitree_legged_sdk` should be replaced in your own case. 
 If your use `unitree_legged_sdk`, then you need to set `UNITREE_SDK_VERSION=3_2` and the path `UNITREE_LEGGED_SDK_PATH`.
