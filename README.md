@@ -1,10 +1,9 @@
-Packages Version: v3.2.1
+Kist Packages Version: v1.0(Unitree Packages Version: v3.2.1)
 
 # Introduction
 This package can send control command to real robot from ROS. You can do low-level control(namely control all joints on robot) and high-level control(namely control the walking direction and speed of robot).
 
-This version is suitable for unitree_legged_sdk v3.2 and v3.1, namely A1 and Aliengo robot. Currently, all the A1 and Aliengo use v3.2. If your Aliengo is really old, then it may use v3.1.
-As for Go1, please use the v3.4 release version of this package and unitree_legged_sdk v3.4.
+This version is suitable for unitree_legged_sdk v3.2 and v3.1, namely A1. Currently, all the A1 and Aliengo use v3.2. 
 
 ## Packages:
 
@@ -13,13 +12,11 @@ Basic message function: `kist_legged_msgs`
 The interface between ROS and real robot: `kist_legged_real`
 
 # Dependencies
-* [unitree_legged_sdk](https://github.com/unitreerobotics): If your robot is suitable for `unitree_legged_sdk`, then you do not need `aliengo_sdk`.
-* [aliengo_sdk](https://github.com/unitreerobotics): If your robot is suitable for `aliengo_sdk`, then you do not need `unitree_legged_sdk`.
+* [unitree_legged_sdk](https://github.com/unitreerobotics): your robot is suitable for `unitree_legged_sdk`
 
 # Configuration
 Make sure the following exist in your `~/.bashrc` file or export them in terminal. `melodic`, `gazebo-8`, `~/catkin_ws`, `amd64` and the paths to `unitree_legged_sdk` should be replaced in your own case. 
 If your use `unitree_legged_sdk`, then you need to set `UNITREE_SDK_VERSION=3_2` and the path `UNITREE_LEGGED_SDK_PATH`.
-Otherwise, if you use `aliengo_sdk`, you need to set `UNITREE_SDK_VERSION=3_1` and the path `ALIENGO_SDK_PATH`.
 
 ```
 source /opt/ros/melodic/setup.bash
@@ -42,12 +39,12 @@ You can use catkin_make to build ROS packages. First copy the package folder to 
 cd ~/catkin_ws
 catkin_make
 ```
-Before compiling `unitree_legged_real`, please make sure that the `unitree_legged_msgs` has been compiled.
+Before compiling `kist_legged_real`, please make sure that the `kist_legged_msgs` has been compiled.
 
 # Setup the net connection
 First, please connect the network cable between your PC and robot. Then run `ifconfig` in a terminal, you will find your port name. For example, `enx000ec6612921`.
 
-Then, open the `ipconfig.sh` file under the folder `unitree_legged_real`, modify the port name to your own. And run the following commands:
+Then, open the `ipconfig.sh` file under the folder `kist_legged_real`, modify the port name to your own. And run the following commands:
 ```
 sudo chmod +x ipconfig.sh
 sudo ./ipconfig.sh
@@ -86,6 +83,7 @@ We offered some examples. When you run the low level controller, please make sur
 position_lcm
 velocity_lcm
 torque_lcm
+custom_lcm
 ```
 The `velocity_lcm` and `torque_lcm` have to run under root account too. Please use the same method as runing `real_launch`.
 
